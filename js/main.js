@@ -1,62 +1,65 @@
-idActual = prompt("ingrese un ID ");
+
 var stop = false;
+var id = 1;
+var vectorAlumno = [0];/*Guarda alumnos*/
 
 
-const estudiante = function (idEstudiante, promedioEstudiante){
-    this.idEstudiante = idEstudiante;
-    this.promedioEstudiante = promedioEstudiante;
-}
-
-
-let vectorAlumno = [0]
-
-
-function agregarAlumno () {
-    let idEstudiante = idEstudiante;
-    let promedio = promedio;
-
-    let estudiante = new estudiante (idEstudiante, promedioEstudiante);
-    vectorAlumno.push(estudiante)
+const Estudiante = function (){
+    this.nombre = "";
+    this.idEstudiante = 0;
+    this.notas = [0];
+    this.promedioEstudiante = 0;
 }
 
 
 
 
+function CrearAlumno (id) {
+    let nombre = prompt("ingrese un Nombre ");
+    let nombreUpper = nombre.toLocaleUpperCase();
 
-function sumaDeNotas () {
-    for (let i=1; i <= 5; i++){
-        let nota = parseFloat(prompt("Nota "));
-        if ((isNaN(nota)) || (nota <= 1)) {
-            nota = 1;
-        };
-        total= total + nota;
+
+
+    if (      (nombreUpper != null ) && (nombreUpper != "")      ){
+        let estudiante = new Estudiante (id);
+        estudiante.idEstudiante = id;
+        estudiante.nombre = nombreUpper;
+        vectorAlumno.push(estudiante)
+        return estudiante;
     }
+    return null;
 }
+
+function cargarNotas (estudiante){
+    for (let i=1; i <= MAX_NOTAS; i++){
+        let nota = parseFloat(prompt("Nota "));
+            if ((isNaN(nota)) || (nota <= 1)){
+            nota = 1;
+            };
+            estudiante.notas.push = nota;
+        };
+}
+
+function calcularPromedios (estudiante) {
+    suma = 0;
+    estudiante.notas.array.forEach(element => {
+        suma = suma +  element; 
+    });
+    estudiante.promedioEstudiante = suma / MAX_NOTAS;
+}
+
 
 
 
 while (!stop){
-    nota=0;
-    total=0;
-    promedioActual=0;
+let estudiante = CrearAlumno (id);
 
-    sumaDeNotas (nota, total);
-
-    promedioActual =  parseFloat(total / 5);
-    alert(promedio);
-
-
-    agregarAlumno(idActual, promedio);
-
-
-
-
-
-    let idActual = prompt("Nuevo un ID ");
-    if ((idActual == null) || (idActual =="")) {
-    stop = true
-    };
-
+if (estudiante != null){
+    cargarNotas(estudiante);
+    calcularPromedios(estudiante);
+    id = id + 1; 
+} else { 
+    stop = true}
 
 }
 
