@@ -1,13 +1,13 @@
-
+const MAX_NOTAS = 5;
 var stop = false;
 var id = 1;
-var vectorAlumno = [0];/*Guarda alumnos*/
+var vectorAlumno = [];/*Guarda alumnos*/
 
 
 const Estudiante = function (){
     this.nombre = "";
     this.idEstudiante = 0;
-    this.notas = [0];
+    this.notas = [];
     this.promedioEstudiante = 0;
 }
 
@@ -16,14 +16,11 @@ const Estudiante = function (){
 
 function CrearAlumno (id) {
     let nombre = prompt("ingrese un Nombre ");
-    let nombreUpper = nombre.toLocaleUpperCase();
 
-
-
-    if (      (nombreUpper != null ) && (nombreUpper != "")      ){
+    if (      (nombre != null ) && (nombre != "")      ){
         let estudiante = new Estudiante (id);
         estudiante.idEstudiante = id;
-        estudiante.nombre = nombreUpper;
+        estudiante.nombre = nombre.toLocaleUpperCase();;
         vectorAlumno.push(estudiante)
         return estudiante;
     }
@@ -36,19 +33,30 @@ function cargarNotas (estudiante){
             if ((isNaN(nota)) || (nota <= 1)){
             nota = 1;
             };
-            estudiante.notas.push = nota;
+            estudiante.notas.push(nota);
         };
 }
 
 function calcularPromedios (estudiante) {
     suma = 0;
-    estudiante.notas.array.forEach(element => {
+    estudiante.notas.forEach(element => {
         suma = suma +  element; 
     });
     estudiante.promedioEstudiante = suma / MAX_NOTAS;
 }
 
+function listar() {
+    console.log("Alumnos cargados")
+    vectorAlumno.forEach((alumno) => console.log(alumno));
+}
 
+function eliminar(id) {
+    // implementar ...
+}
+
+function leer(id) {
+    // implementar
+}
 
 
 while (!stop){
@@ -62,6 +70,8 @@ if (estudiante != null){
     stop = true}
 
 }
+
+listar()
 
 
 
