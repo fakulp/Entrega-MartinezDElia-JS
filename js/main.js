@@ -52,10 +52,24 @@ function listar() {
 
 function eliminar(id) {
     // implementar ...
+    delete(vectorAlumno[id]);
+    console.log(vectorAlumno);
+
+    /*Alternativa sin undefined 
+    
+    corrimiento= id - 1;
+    meses.splicer (id, corrimiento);
+    console.log(vectorAlumno);
+    
+    */
+
 }
 
 function leer(id) {
     // implementar
+    console.log(vectorAlumno.includes(id));
+    console.log( vectorAlumno[id].id + "Llamado " + vectorAlumno[id].nombre + " y su promedio es de " + vectorAlumno[id].promedioEstudiante);
+
 }
 
 
