@@ -8,7 +8,15 @@ const urlImage = "https://image.tmdb.org/t/p/w500"
 
 
 fetch (url, options)
-    .then(response => response.json())
+    .then((response) => {
+        if (response.ok){
+            return response.json()}
+        else{
+            alert("Error");
+            window.location.href = "../index.html"
+        }
+        })
+
     .then ( data => {
 
         let movieForm = form.querySelector("input[name=nombreDePelicula]");
@@ -18,7 +26,7 @@ fetch (url, options)
         let id = form.querySelector("input[name=codigoIMDB]");
         id.readOnly= true;
         id.value = data.id;
-        
+
         let poster = form.querySelector("input[name=posterUrl]");
         poster.readOnly=true;
         poster.value = urlImage + data.poster_path;
@@ -26,8 +34,8 @@ fetch (url, options)
         let moviePoster= form.querySelector("#moviePoster");
         moviePoster.src = urlImage + data.poster_path;
     }
-
 )
+
 
 
 function peliculaGuardar (evento) {
